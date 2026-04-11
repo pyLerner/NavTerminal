@@ -1,0 +1,24 @@
+[API]
+Host = "127.0.0.1"
+Port = 7000
+Token = "A0473A67-27A1-3C05-A2D1-5C134639347F"
+
+[NDTP]
+Host = "10.68.1.4"
+Port = 9201
+
+[System]
+LogDir = "/data/NDTPClient/log/mgt-client.log"
+MessageLogDir = "/data/NDTPClient/log/mgt-MessageLog.log"
+Timeout = 10
+PeerAddr = 706197201
+Disconnect = false
+Regular = true 
+Interval = 15
+ServerPort = 4053
+
+[History]
+HistDir = "/data/NDTPClient/db/mgt-hist.db"
+MaxRecords = 150000
+CleanInterval = 20
+

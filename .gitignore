@@ -1,0 +1,3 @@
+docker-images/
+**/log*/*.log
+**/db/*.db*

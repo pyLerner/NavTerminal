@@ -1,0 +1,45 @@
+# v.1.0.7 сборка onefile  
+# version: "3.9"
+
+services:
+  navterminal:
+    image: navterminal:v.1.0.7
+    build:
+        context: .
+        dockerfile: docker/Dockerfile
+    container_name: navterminal 
+    restart: always
+
+    # FastAPI
+    ports:
+        - "7000:7000"
+        - "4054:4054"
+
+    # Последовательный порт
+    devices:
+      - "/dev/ttyS3:/dev/ttyS3"
+
+    # Данные, конфиги, логи, sqlite, localtime
+    volumes:
+      - /home/teamhd/Projects/DockerBuilds/NavigateTerminal/NDTPClient/etc:/data/NDTPClient/etc
+      - /home/teamhd/Projects/DockerBuilds/NavigateTerminal/NDTPClient/db:/data/NDTPClient/db
+      - /home/teamhd/Projects/DockerBuilds/NavigateTerminal/NDTPClient/log:/data/NDTPClient/log
+      - /home/teamhd/Projects/DockerBuilds/NavigateTerminal/NavAPIServer/etc:/data/NavAPIServer/etc
+      - /home/teamhd/Projects/DockerBuilds/NavigateTerminal/NavAPIServer/db:/data/NavAPIServer/db
+      - /home/teamhd/Projects/DockerBuilds/NavigateTerminal/NavAPIServer/logs:/data/NavAPIServer/logs
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+
+    logging:
+        driver: json-file
+        options:
+            max-size: "10m"
+            max-file: "5"
+
+    # Если нужны права на serial
+    group_add:
+      - dialout
+
+    # Чтобы корректно завершались оба процесса
+    stop_signal: SIGTERM
+    stop_grace_period: 10s

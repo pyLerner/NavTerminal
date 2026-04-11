@@ -1,0 +1,23 @@
+[API]
+Host = "127.0.0.1"
+Port = 7000
+Token = "A0473A67-27A1-3C05-A2D1-5C134639347F"
+
+[NDTP]
+Host = "195.122.228.34"
+Port = 4875
+
+[System]
+LogDir = "/data/NDTPClient/log/nn-client.log"
+MessageLogDir = "/data/NDTPClient/log/nn-MessageLog.log"
+Timeout = 15
+PeerAddr = 99999997
+Regular = true
+Disconnect = false
+Interval = 15
+ServerPort = 4050
+
+[History]
+HistDir = "/data/NDTPClient/db/nn-hist.db"
+MaxRecords = 150000
+CleanInterval = 20
